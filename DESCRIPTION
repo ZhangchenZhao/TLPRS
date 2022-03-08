@@ -1,0 +1,13 @@
+Package: TLPRS
+Type: Package
+Title: Construct Multi-ethnic Polygenic Risk Score using Transfer Learning 
+Version: 1.0.0
+Date: 2021-03-07
+Author: Zhangchen Zhao, Seunggeun Lee
+Maintainer: Zhangchen Zhao <zczhao@umich.edu>
+Description: Use transfer learning to fine-tune the baseline model trained with GWAS summary statistics from a larger sample size ancestry group to a smaller target ancestry group. For the latest version, please check <https://github.com/ZhangchenZhao/TLPRS>.
+Depends: R (>= 3.0.0)
+License: GPL (>= 2)
+Repository: CRAN
+NeedsCompilation: no
+Packaged: 2021-03-07 10:00:00 UTC; Zhangchen
