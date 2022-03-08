@@ -3,6 +3,8 @@ library(lassosum)
 library(Matrix)
 library(parallel)
 
+
+##calculate nagelkerke R2 for binary phenotypes
 nagelkerke<-function (fit, null = NULL, restrictNobs = FALSE){
     TOGGLE = (class(fit)[1] == "lm" | class(fit)[1] == "gls" |
         class(fit)[1] == "lme" | class(fit)[1] == "glm" | class(fit)[1] ==
@@ -143,7 +145,7 @@ logistic_result_generator_old<-function(PRS,ped,Covar_name,Y_name){
         return(r2)
 }
 
-##resulttemp,ped,Covar_name,Y_name
+##Generate logitic regression results for binary phenotype
 logistic_result_generator<-function(PRS,ped,Covar_name,Y_name){
         datatemp2=merge(PRS,ped,by.x=c("FID","IID"),by.y=c("FID","IID"))
   	datatemp2$PRS=scale(datatemp2$SCORESUM, center = TRUE, scale = TRUE)
@@ -160,7 +162,7 @@ logistic_result_generator<-function(PRS,ped,Covar_name,Y_name){
 }
 
 
-##resulttemp,ped,Covar_name,Y_name
+##Generate linear regression results for continuous phenotype
 linear_result_generator<-function(PRS,ped,Covar_name,Y_name){
 	datatemp2=merge(PRS,ped,by.x=c("FID","IID"),by.y=c("FID","IID"))
 	datatemp2$PRS=scale(datatemp2$SCORESUM, center = TRUE, scale = TRUE)
