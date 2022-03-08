@@ -1,7 +1,7 @@
-\name{ScoreTest_SPA}
-\alias{ScoreTest_SPA}
+\name{TL_PRS}
+\alias{TL_PRS}
 \title{
-Score test based on saddlepoint approximation
+Perform TL-PRS on Score test based on saddlepoint approximation
 }
 \description{
 Performs score test using saddlepoint approximation to estimate the null distribution.
