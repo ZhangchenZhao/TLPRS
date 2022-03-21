@@ -1,48 +1,48 @@
 \name{TL_PRS}
 \alias{TL_PRS}
 \title{
-Perform TL-PRS on Score test based on saddlepoint approximation
+Perform TL-PRS using summary statistics
 }
 \description{
-Performs score test using saddlepoint approximation to estimate the null distribution.
+  Perform TL-PRS using summary statistics
 }
 \usage{
-ScoreTest_SPA(genos,pheno,cov,obj.null,method=c("fastSPA","SPA"),minmac=5,
-Cutoff=2,alpha=5*10^-8,missing.id=NA,beta.out=FALSE,beta.Cutoff=5*10^-7)
+TL_PRS(ped_file,Covar_name,Y_name, Ytype="C",train_file,test_file,sum_stats_file,
+       target_sumstats_file, LDblocks="EUR.hg19",finalfile,cluster=NULL)
 }
 \arguments{
-  \item{genos}{
-A vector or matrix containing the genotypes or dosages. If matrix is provided then rows should correspond to SNPs and columns should correspond to subjects. Optional, but needed if \code{obj.null} is missing.
+  \item{ped_file}{
+The location path of ped file, where contains the information of FID, IID, outcome (Y) and covariates. Note that the file only requires samples from test_file.
 }
-  \item{pheno}{
-A vector containing the outcomes (phenotypes). Optional, but needed if \code{obj.null} is missing.
+  \item{Covar_name}{
+A vector of names of covariates we need to adjust in the model, such as c("Sex","BY","PC1","PC2","PC3","PC4"). Note that all names must corrspond to the columns in the ped file.
 }
-  \item{cov}{
-A matrix or data frame containing the covariates. Optional, but needed if \code{obj.null} is missing.
+  \item{Y_name}{
+The name of Y in the model, such as "LDL". Note that the Y name must corrspond to a column in the ped file.
 }
-  \item{obj.null}{
-An object of class "\code{SA_NULL}". (Optional)
+  \item{Ytype}{
+The type of Y should be either "C"(continuous) or "B"(binary).
 }
-  \item{method}{
-String specifying the p-value calculation method. Possible values are "\code{fastSPA}" (default) and "\code{SPA}".
+  \item{train_file}{
+The prefix of plink file of the training data in the target population. Note that we use the training data to train the new effect sizes of the target population. 
 }
-  \item{minmac}{
-Minimum minor allele count threshold to run SPA test, default value is \eqn{5}.
+  \item{test_file}{
+The prefix of plink file of the testing data in the target population. Note that we use the testing data to choose the best tuning parameter. 
 }
-  \item{Cutoff}{
-An integer or the string "BE" denoting the standard deviation cutoff to be used. If \code{Cutoff} = "BE", the level-specific cutoff based on Berry-Esseen theorem is calculated. If the test statistic lies within the standard deviation cutoff of the mean, p-value based on traditional score test is returned. Default value is 2.
+  \item{sum_stats_file}{
+The file contains the effect sizes from other resources. Specifically it contains the following three columns:"SNP","A1","Beta". "SNP" is the SNPID (the same format as SNPID in plink files); "A1" is the alternative (effect) allele; "Beta" is the effect size. 
 }
-  \item{alpha}{
-Significance level for the test(s), default value is \eqn{5\times 10^{-8}}. Used only if \code{Cutoff} = "BE".
+  \item{target_sumstats_file}{
+The file contains the effect sizes from other resources. Specifically it contains the following three columns:"SNP","A1","Beta". "SNP" is the SNPID (the same format as SNPID in plink files); "A1" is the alternative (effect) allele; "Beta" is the effect size. 
 }
-  \item{missing.id}{
-Missing value indicator. Numeric or \code{NA}, default value is \code{NA}.
+  \item{LDblocks}{
+This will use LD regions as defined in Berisa and Pickrell (2015) for the European population and the hg19 genome. Currently we support three types:"EUR.hg19","AFR.hg19","ASN.hg19", corresponding to European, African and Asian populations, respectively.
 }
-  \item{beta.out}{
-Logical indicating whether log odds ratios (beta parameters) are to be estimated, default value is \code{FALSE}.
+  \item{finalfile}{
+Logical indicatng whether log odds ratios (beta parameters) are to be estimated, default value is \code{FALSE}.
 }
-  \item{beta.Cutoff}{
-Maximum p-value threshold for beta parameters to be estimated, default value is \eqn{5\times 10^{-7}}.
+  \item{cluster}{
+The prefix of the file location which can be used to store the temporary files. Note that the function needs to save files in this directory.
 }
 }
 
