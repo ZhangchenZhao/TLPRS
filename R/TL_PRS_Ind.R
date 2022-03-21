@@ -160,8 +160,8 @@ PRStr_calculation<-function(obj, train_file, sum_stats, LDblocks, cluster=NULL,t
 ######################The function used individual level data for training############### 
 ##ped_file=ped.file;Covar_name=cov_name;Y_name=kword;train_file=train.bfile;test_file=test.bfile;sum_stats_file=beta.file;LDblocks="EUR.hg19"
 ##PRS_TransferLearning(ped.file,"",kword, Ytype="C",train.bfile,test.bfile,beta.file,LDblocks="EUR.hg19",tempfile)}
-TL_PRS_Ind<-function(ped_file,Covar_name,Y_name, Ytype="C",train_file,test_file,sum_stats_file,LDblocks="EUR.hg19",tempfile,cluster=NULL){
-
+TL_PRS_Ind<-function(ped_file,Covar_name,Y_name, Ytype="C",train_file,test_file,sum_stats_file,LDblocks="EUR.hg19",outfile,cluster=NULL){
+	tempfile=outfile
 	out1=PRStr_main_check(ped_file,Covar_name,Y_name, Ytype,train_file,test_file,sum_stats_file,LDblocks)
 	if (out1!=0){stop(out1)}
 
