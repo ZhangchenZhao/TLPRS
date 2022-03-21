@@ -46,19 +46,6 @@ A \code{cluster} object from the \code{parallel} package for parallel computing
 }
 }
 
-\details{
-\code{genos} can have discrete \code{0, 1, 2} values or continuous values between \code{[0,2]}. The genotype or dosage values can represent any of the major allele, minor allele, reference allele or alternate allele counts (or dosages), as long as it is consistent throughout the subjects.
-
-\code{genos} can have missing values denoted by the \code{missing.id} argument. Such missing values will be imputed using mean imputation. \code{pheno} or \code{cov} cannot have missing values. 
-
-\code{pheno} and \code{cov} are ignored if \code{obj.null} is provided. If both \code{obj.null} and \code{cov} is missing, or \code{obj.null} is missing and \code{cov=NULL}, then the vector \code{rep(1,n)} is assigned to \code{cov}, where \code{n} is the number of subjects.
-
-\code{method} = "SPA" is the basic saddlepoint approximation based test without the partially normal approximation improvement.
-\code{method} = "fastSPA" utilizes the partially normal approximation approach for improved efficiency, especially for rare variants.
-
-Beta parameters are estimated using Firth's method, and thus computationally expensive. Therefore, it is recommended that beta parameters are only to be estimated when the p-value is very small (denoted by \code{beta.Cutoff}). The code for beta estimation is as implemented by Clement Ma in the EPACTS software.
-}
-
 \value{
 \item{best.learning.rate}{the learning rate we can use in order to achieve the best risk prediction.}
 \item{best.iteration}{the number of iterations we should stop in order to achieve the best risk prediction.}
