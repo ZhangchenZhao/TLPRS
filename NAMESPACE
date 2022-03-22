@@ -1,2 +1,2 @@
 export("TL_PRS","TL_PRS_Ind")
-importFrom("lm","glm","merge","parLapplyLB","p2cor","na.omit")
+importFrom("Matrix","data.table","parallel","lassosum")
