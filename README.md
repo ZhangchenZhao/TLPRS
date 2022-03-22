@@ -7,7 +7,7 @@ This package contains two main function: TL_PRS and TL_PRS_Ind. The main differe
 [Zhao, Z., Fritsche, L.G., Smith, J.A., Mukherjee, B. and Lee, S., 2022. The Construction of Multi-ethnic Polygenic Risk Score using Transfer Learning. medRxiv.](https://www.medrxiv.org/content/10.1101/2022.03.08.22272114v1)
 
 ## Installation
-`TL-PRS` requires the following R packages:  `lassosum` and `parallel`. Install them by: 
+`TL-PRS` requires the software 'plink' as well as the following R packages:  `lassosum` and `parallel`. Install them by: 
 
 ```r
 install.packages(c("lassosum", "parallel"), dependencies=TRUE)
@@ -20,53 +20,53 @@ install_github("ZhangchenZhao/TLPRS")
 for the latest development version. Or you can clone the latest development version here and install yourself using `devtools`. 
 
 ## Inputs of TL_PRS.
-ped_file:
+1. `ped_file`:
 The location path of ped file, where contains the information of FID, IID, outcome (Y) and covariates. Note that the file only requires samples from test_file.
 
-Covar_name:
+2. `Covar_name`:
 A vector of names of covariates we need to adjust in the model, such as c("Sex","BY","PC1","PC2","PC3","PC4"). Note that all names must corrspond to the columns in the ped file.
 
-Y_name: 
+3. `Y_name`: 
 The name of Y in the model, such as "LDL". Note that the Y name must corrspond to a column in the ped file.
 
-Ytype: 
+4. `Ytype`: 
 The type of Y should be either "C"(continuous) or "B"(binary).
 
-train_file:
+5. `train_file`:
 The prefix of plink file of the training data in the target population. Note that we use the training data to train the new effect sizes of the target population. 
 
-test_file:
+6. `test_file`:
 The prefix of plink file of the testing data in the target population. Note that we use the testing data to choose the best tuning parameter. 
 
-sum_stats_file:
+7. `sum_stats_file`:
 The location path of effect size file. We usually can obtain this file by existing PRS methods, such as lassosum/PRS-CS. Specifically it contains the following three columns:"SNP","A1","Beta". "SNP" is the SNPID (the same format as SNPID in plink files); "A1" is the alternative (effect) allele; "Beta" is the effect size. 
 
-target_sumstats_file:
+8. `target_sumstats_file`:
 The location path of summary stats file for the target population. The file requires the following columns: "SNP", "A1", "beta", "N", and "p", wheren "beta" is the effect size from summary statistics, "N" is the sample size used for calculating summary statistics, and "p" is p-value of the SNP. 
 
-LDblocks:
+9. `LDblocks`:
 This will use LD regions as defined in Berisa and Pickrell (2015) for the European population and the hg19 genome. Currently we support three types:"EUR.hg19","AFR.hg19","ASN.hg19", corresponding to European, African and Asian populations, respectively.
 
-outfile:
+10. `outfile`:
 The prefix of the file location which can be used to store the final output files. Note that the function needs to save files in this directory.
 
-cluster:
+11. `cluster`:
 A cluster object from the parallel package for parallel computing
 
 ## Outputs of TL_PRS
-best.learning.rate: 
+1. `best.learning.rate`: 
 the learning rate we can use in order to achieve the best risk prediction.
 
-best.iteration: 
+2. `best.iteration`: 
 the number of iterations we should stop in order to achieve the best risk prediction.
 
-best.beta: 
+3. `best.beta`: 
 the data frame containing three columns: "SNP","A1","beta". Note that this is the best effect size we can use to construct PRS, selected using best.learning.rate and best.iteration.  
 
-best.PRS: 
+4. `best.PRS`: 
 This component provides PRS for testing file. It is a data frame containing four columns:"FID","IID","PRS.NULL","PRS.TL". Note that "PRS.NULL" is calculated based on effect sizes provided by sum_stats_file and "PRS.TL" is calculated based on best.beta. 
 
-param_table: 
+5. `param_table`: 
 the data frame containing a grid of candidates of learning rates and the number of iterations that we consider. 
 
 
