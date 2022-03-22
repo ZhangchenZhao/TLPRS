@@ -19,7 +19,7 @@ install_github("ZhangchenZhao/TLPRS")
 ```
 for the latest development version. Or you can clone the latest development version here and install yourself using `devtools`. 
 
-## Inputs of TL_PRS.
+## Inputs of TL_PRS
 1. `ped_file`:
 The location path of ped file, where contains the information of FID, IID, outcome (Y) and covariates. Note that the file only requires samples from test_file.
 
