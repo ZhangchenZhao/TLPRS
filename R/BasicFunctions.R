@@ -373,7 +373,7 @@ PRStr_tuning<-function(Beta.all, ped, Covar_name,Y_name, Ytype, test_file){
         out.item[flag-2,2]=as.numeric(logistic_result_generator(resulttemp,ped,Covar_name,Y_name))
       }
     }
-    flag=which(out.item$R2==max(out.item$R2))
+    flag=which(out.item$R2==max(out.item$R2))[1]
     param_table=data.frame("lr"=c(0,rep(1/nrow(beta.all)*c(1,10,100,1000),each=15)),"iter"=c(0,rep(1:15,4)))   
     out.final=list()
     out.final$best.learning.rate=param_table$lr[flag]
