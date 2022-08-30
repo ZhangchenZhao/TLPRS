@@ -244,7 +244,7 @@ Calculate_PRS<-function(test.bfile,B.beta.info,B.beta.all){
 	BM0[[1]]=BM
 
 	system.time({
-	pgs <- lapply(BM0, function(x) pgs(bfile=test.bfile, weights = x, 
+	pgs <- lapply(BM0, function(x) lassosum:::pgs(bfile=test.bfile, weights = x, 
            extract=flag, keep=NULL, 
            cluster=NULL))
 	})
