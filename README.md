@@ -35,8 +35,8 @@ The type of Y should be either "C"(continuous) or "B"(binary).
 5. `train_file`:
 The prefix of plink file of the training data in the target population. Note that we use the training data to train the new effect sizes of the target population. 
 
-6. `test_file`:
-The prefix of plink file of the testing data in the target population. Note that we use the testing data to choose the best tuning parameter. 
+6. `validate_file`:
+The prefix of plink file of the validation data in the target population. Note that we use the validation data to choose the best tuning parameter. 
 
 7. `sum_stats_file`:
 The location path of effect size file. We usually can obtain this file by existing PRS methods, such as lassosum/PRS-CS. Specifically it contains the following three columns:"SNP","A1","Beta". "SNP" is the SNPID (the same format as SNPID in plink files); "A1" is the alternative (effect) allele; "Beta" is the effect size. 
@@ -85,11 +85,11 @@ library(parallel)
 ped_file="/net/snowwhite/home/zczhao/PRS/Pipeline/Pheno/AFR_8traits_1113.ped";
 Covar_name=c("Sex","BY","P1","P2","P3","P4");Y_name="LDL";Ytype="C"
 train_file="/net/snowwhite/home/zczhao/PRS/Pipeline/data/African_4kGWAS_plink"
-test_file="/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/African/African_2ktrain_plink"
+validate_file="/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/African/African_2ktrain_plink"
 sum_stats_file=paste0("/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/Method1/Training/out_","lassosum","_","AFR_5k","_","LDL","_","eur",".txt")
 LDblocks="EUR.hg19"
 tempfile="/net/snowwhite/home/zczhao/PRS/Pipeline/Rpackage/Temp/LDL_0408_"
-system.time({out.beta=PRS_TransferLearning(ped_file,Covar_name,Y_name,Ytype, train_file,test_file,sum_stats_file,LDblocks,tempfile)})
+system.time({out.beta=PRS_TransferLearning(ped_file,Covar_name,Y_name,Ytype, train_file,validate_file,sum_stats_file,LDblocks,tempfile)})
 summary(out.beta)
 ```
 
