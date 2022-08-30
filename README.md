@@ -72,6 +72,9 @@ the data frame containing a grid of candidates of learning rates and the number 
 
 ## Example of TL_PRS 
 
+I only list one example script without any data below. If you would like to play with a toy example and run TL-PRS on it, here is the link:
+https://www.dropbox.com/sh/40vewd1kuxcbeev/AAD7Dj3H-sBTWv2ObUIDEHFya?dl=0 
+
 ```
 ##plink-1.9 needs to be pre-installed.
 source("/net/snowwhite/home/zczhao/PRS/Pipeline/Rpackage/PRS_TransferLearning.R")
