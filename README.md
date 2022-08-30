@@ -21,10 +21,10 @@ for the latest development version. Or you can clone the latest development vers
 
 ## Inputs of TL_PRS
 1. `ped_file`:
-The location path of ped file, where contains the information of FID, IID, outcome (Y) and covariates. Note that the file only requires samples from test_file.
+The location path of ped file, where contains the information of FID, IID, outcome (Y) and covariates. Note that the file only requires samples from `validate_file`.
 
 2. `Covar_name`:
-A vector of names of covariates we need to adjust in the model, such as c("Sex","BY","PC1","PC2","PC3","PC4"). Note that all names must corrspond to the columns in the ped file.
+A vector of names of covariates we need to adjust in the model, such as c("Sex","Age"). Note that all names must corrspond to the columns in the ped file.
 
 3. `Y_name`: 
 The name of Y in the model, such as "LDL". Note that the Y name must corrspond to a column in the ped file.
@@ -83,7 +83,7 @@ library(lassosum)
 library(Matrix)
 library(parallel)
 ped_file="/net/snowwhite/home/zczhao/PRS/Pipeline/Pheno/AFR_8traits_1113.ped";
-Covar_name=c("Sex","BY","P1","P2","P3","P4");Y_name="LDL";Ytype="C"
+Covar_name=c("Sex","Age");Y_name="LDL";Ytype="C"
 train_file="/net/snowwhite/home/zczhao/PRS/Pipeline/data/African_4kGWAS_plink"
 validate_file="/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/African/African_2ktrain_plink"
 sum_stats_file=paste0("/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/Method1/Training/out_","lassosum","_","AFR_5k","_","LDL","_","eur",".txt")
