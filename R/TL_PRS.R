@@ -178,7 +178,7 @@ TL_PRS<-function(ped_file,Covar_name,Y_name, Ytype="C",train_file,test_file,sum_
 	gc()
 
 	beta_list=as.data.frame(PRStr_calculation2(sum_stats_target, train_file, sum_stats, LDblocks, cluster=cluster,temp.file=paste0(tempfile,"_step1")))
-	beta_list=as.data.frame(beta_list[,-"A1"])
+	beta_list=as.data.frame(beta_list[,-c(5,9)])
 	colnames(beta_list)[1:2]=c("SNP","A1")
 	write.table(beta_list,file=paste0(tempfile,"_beta.candidates.txt"),row.names=F,quote=F,col.names=T)
 
