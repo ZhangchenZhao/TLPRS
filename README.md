@@ -77,11 +77,7 @@ https://www.dropbox.com/sh/40vewd1kuxcbeev/AAD7Dj3H-sBTWv2ObUIDEHFya?dl=0
 
 ```
 ##plink-1.9 needs to be pre-installed.
-source("/net/snowwhite/home/zczhao/PRS/Pipeline/Rpackage/PRS_TransferLearning.R")
-library(data.table)
-library(lassosum)
-library(Matrix)
-library(parallel)
+library(TLPRS)
 ped_file="/net/snowwhite/home/zczhao/PRS/Pipeline/Pheno/AFR_8traits_1113.ped";
 Covar_name=c("Sex","Age");Y_name="LDL";Ytype="C"
 train_file="/net/snowwhite/home/zczhao/PRS/Pipeline/data/African_4kGWAS_plink"
