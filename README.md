@@ -84,8 +84,8 @@ train_file="/net/snowwhite/home/zczhao/PRS/Pipeline/data/African_4kGWAS_plink"
 validate_file="/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/African/African_2ktrain_plink"
 sum_stats_file=paste0("/net/csgspare3/snowwhite.archive/zczhao/PRS_Geno/Method1/Training/out_","lassosum","_","AFR_5k","_","LDL","_","eur",".txt")
 LDblocks="EUR.hg19"
-tempfile="/net/snowwhite/home/zczhao/PRS/Pipeline/Rpackage/Temp/LDL_0408_"
-system.time({out.beta=PRS_TransferLearning(ped_file,Covar_name,Y_name,Ytype, train_file,validate_file,sum_stats_file,LDblocks,tempfile)})
+outfile="/net/snowwhite/home/zczhao/PRS/Pipeline/Rpackage/Temp/LDL_0408_"
+system.time({out.beta=PRS_TransferLearning(ped_file,Covar_name,Y_name,Ytype, train_file,validate_file,sum_stats_file,LDblocks,outfile)})
 summary(out.beta)
 ```
 
