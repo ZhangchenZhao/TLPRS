@@ -72,7 +72,7 @@ the data frame containing a grid of candidates of learning rates and the number 
 
 ## Example of TL_PRS 
 
-I only list one example script below. If you would like to play with a toy example and run TL-PRS using this example script, plase use the link:
+I list one example script below. If you would like to play with a toy example and run TL-PRS using this example script, please use the link to download the data:
 https://www.dropbox.com/sh/40vewd1kuxcbeev/AAD7Dj3H-sBTWv2ObUIDEHFya?dl=0 
 
 ```
