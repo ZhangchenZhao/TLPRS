@@ -119,4 +119,4 @@ Correlation_betweenPRSandY( test_file, paste0(outfile, "_best.beta.txt"), ped_te
 ```
 
 ## Support
-If there are any further questions or problems with running or installing `TL-PRS`, please do email me at <zczhao@umich.com>. 
+If there are any further questions or problems with running or installing `TL-PRS`, please do email me at <zczhao@umich.edu>. 
